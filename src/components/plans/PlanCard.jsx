@@ -37,22 +37,22 @@ function PlanCard({ plan, onEdit, onDelete, onExport }) {
         </div>
       </div>
 
-      <div className="flex gap-2 pt-4 border-t border-gray-200">
+      <div className="flex flex-col sm:flex-row gap-2 pt-4 border-t border-gray-200">
         <button
           onClick={onEdit}
-          className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+          className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm sm:text-base"
         >
           Edit Plan
         </button>
         <button
           onClick={onExport}
-          className="px-4 py-2 text-green-600 border border-green-600 rounded-lg hover:bg-green-50 transition-colors"
+          className="sm:flex-none px-4 py-2 text-green-600 border border-green-600 rounded-lg hover:bg-green-50 transition-colors text-sm sm:text-base"
         >
           Export
         </button>
         <button
           onClick={onDelete}
-          className="px-4 py-2 text-red-600 border border-red-600 rounded-lg hover:bg-red-50 transition-colors"
+          className="sm:flex-none px-4 py-2 text-red-600 border border-red-600 rounded-lg hover:bg-red-50 transition-colors text-sm sm:text-base"
         >
           Delete
         </button>

@@ -53,21 +53,21 @@ function ExportPlanModal({ plan, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-2 sm:p-4 z-50">
       <div className="bg-white rounded-lg max-w-6xl w-full max-h-[95vh] overflow-y-auto">
         {/* Header with Print Button */}
-        <div className="sticky top-0 bg-white border-b border-gray-200 p-4 flex justify-between items-center print:hidden">
-          <h2 className="text-2xl font-bold text-gray-800">Export Workout Plan</h2>
-          <div className="flex gap-2">
+        <div className="sticky top-0 bg-white border-b border-gray-200 p-3 sm:p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 print:hidden">
+          <h2 className="text-lg sm:text-2xl font-bold text-gray-800">Export Workout Plan</h2>
+          <div className="flex gap-2 w-full sm:w-auto">
             <button
               onClick={() => window.print()}
-              className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+              className="flex-1 sm:flex-none bg-green-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm sm:text-base"
             >
-              Print / Save as PDF
+              Print / PDF
             </button>
             <button
               onClick={onClose}
-              className="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors"
+              className="flex-1 sm:flex-none bg-gray-200 text-gray-800 px-3 sm:px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors text-sm sm:text-base"
             >
               Close
             </button>
@@ -75,45 +75,45 @@ function ExportPlanModal({ plan, onClose }) {
         </div>
 
         {/* Exportable Content */}
-        <div className="p-8">
+        <div className="p-4 sm:p-8">
           {/* Plan Header */}
-          <div className="mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-2">{plan.name}</h1>
+          <div className="mb-6 sm:mb-8">
+            <h1 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-2">{plan.name}</h1>
             {plan.description && (
-              <p className="text-lg text-gray-600 mb-2">{plan.description}</p>
+              <p className="text-base sm:text-lg text-gray-600 mb-2">{plan.description}</p>
             )}
-            <p className="text-sm text-gray-500">Created: {formatDate(plan.createdAt)}</p>
-            <p className="text-sm text-gray-500">Last Updated: {formatDate(plan.updatedAt)}</p>
+            <p className="text-xs sm:text-sm text-gray-500">Created: {formatDate(plan.createdAt)}</p>
+            <p className="text-xs sm:text-sm text-gray-500">Last Updated: {formatDate(plan.updatedAt)}</p>
           </div>
 
           {/* Summary Statistics */}
-          <div className="mb-8 grid grid-cols-4 gap-4 bg-gray-50 p-4 rounded-lg">
+          <div className="mb-6 sm:mb-8 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 bg-gray-50 p-3 sm:p-4 rounded-lg">
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600">{plan.workouts.length}</div>
-              <div className="text-sm text-gray-600">Total Workouts</div>
+              <div className="text-2xl sm:text-3xl font-bold text-blue-600">{plan.workouts.length}</div>
+              <div className="text-xs sm:text-sm text-gray-600">Workouts</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-green-600">
+              <div className="text-2xl sm:text-3xl font-bold text-green-600">
                 {plan.workouts.reduce((sum, w) => sum + w.exercises.length, 0)}
               </div>
-              <div className="text-sm text-gray-600">Total Exercises</div>
+              <div className="text-xs sm:text-sm text-gray-600">Exercises</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600">{sortedMuscles.length}</div>
-              <div className="text-sm text-gray-600">Muscles Targeted</div>
+              <div className="text-2xl sm:text-3xl font-bold text-purple-600">{sortedMuscles.length}</div>
+              <div className="text-xs sm:text-sm text-gray-600">Muscles</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600">
+              <div className="text-2xl sm:text-3xl font-bold text-orange-600">
                 {Object.values(muscleEngagement).reduce((sum, m) => sum + m.total, 0)}
               </div>
-              <div className="text-sm text-gray-600">Total Engagement</div>
+              <div className="text-xs sm:text-sm text-gray-600">Engagement</div>
             </div>
           </div>
 
           {/* Muscle Engagement Table */}
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">Muscle Engagement Analysis</h2>
-            <table className="w-full border-collapse border border-gray-300">
+          <div className="mb-6 sm:mb-8 overflow-x-auto">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3 sm:mb-4">Muscle Engagement</h2>
+            <table className="w-full border-collapse border border-gray-300 text-sm sm:text-base">
               <thead>
                 <tr className="bg-gray-100">
                   <th className="border border-gray-300 px-4 py-2 text-left">Muscle Group</th>
@@ -153,17 +153,18 @@ function ExportPlanModal({ plan, onClose }) {
 
           {/* Detailed Workout Tables */}
           <div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">Workout Details</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3 sm:mb-4">Workout Details</h2>
             {plan.workouts.map((workout, workoutIndex) => (
-              <div key={workout.id} className="mb-8 page-break-inside-avoid">
-                <h3 className="text-xl font-semibold text-gray-800 mb-3 bg-blue-50 px-4 py-2 rounded">
+              <div key={workout.id} className="mb-6 sm:mb-8 page-break-inside-avoid">
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-3 bg-blue-50 px-3 sm:px-4 py-2 rounded">
                   {workoutIndex + 1}. {workout.name}
                 </h3>
 
                 {workout.exercises.length === 0 ? (
-                  <p className="text-gray-500 italic px-4">No exercises in this workout</p>
+                  <p className="text-gray-500 italic px-3 sm:px-4 text-sm">No exercises in this workout</p>
                 ) : (
-                  <table className="w-full border-collapse border border-gray-300 mb-4">
+                  <div className="overflow-x-auto">
+                    <table className="w-full border-collapse border border-gray-300 mb-4 text-xs sm:text-sm">
                     <thead>
                       <tr className="bg-gray-100">
                         <th className="border border-gray-300 px-4 py-2 text-left">#</th>
@@ -214,6 +215,7 @@ function ExportPlanModal({ plan, onClose }) {
                       })}
                     </tbody>
                   </table>
+                  </div>
                 )}
               </div>
             ))}

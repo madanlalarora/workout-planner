@@ -23,16 +23,16 @@ function Dashboard({ onEditPlan, onCreatePlan }) {
     <div className="max-w-6xl mx-auto">
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h2 className="text-3xl font-bold text-gray-800">My Workout Plans</h2>
-          <p className="text-gray-600 mt-1">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">My Workout Plans</h2>
+          <p className="text-sm sm:text-base text-gray-600 mt-1">
             {plans.length} {plans.length === 1 ? 'plan' : 'plans'} created
           </p>
         </div>
         <button
           onClick={onCreatePlan}
-          className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+          className="bg-blue-600 text-white px-3 py-2 sm:px-6 sm:py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm sm:text-base"
         >
-          + Create New Plan
+          + Create
         </button>
       </div>
 

@@ -41,29 +41,29 @@ function ExerciseManager() {
   return (
     <div className="max-w-6xl mx-auto">
       <div className="mb-6">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-3xl font-bold text-gray-800">Exercise Library</h2>
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-3">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">Exercise Library</h2>
           <button
             onClick={() => setIsAdding(true)}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+            className="w-full sm:w-auto bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm sm:text-base"
           >
             + Add Exercise
           </button>
         </div>
 
         {/* Search and Filter */}
-        <div className="flex gap-4 mb-4">
+        <div className="flex flex-col sm:flex-row gap-3 mb-4">
           <input
             type="text"
             placeholder="Search exercises..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
           />
           <select
             value={filterCategory}
             onChange={(e) => setFilterCategory(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full sm:w-auto px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
           >
             <option value="all">All Categories</option>
             <option value="compound">Compound</option>

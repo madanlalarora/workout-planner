@@ -108,20 +108,20 @@ function PlanBuilder({ planId, onBack }) {
       {/* Workouts Section */}
       {!isNewPlan && plan && (
         <>
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-2xl font-semibold text-gray-800">Workouts</h3>
-            <div className="flex gap-2">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-3">
+            <h3 className="text-xl sm:text-2xl font-semibold text-gray-800">Workouts</h3>
+            <div className="flex gap-2 w-full sm:w-auto">
               <button
                 onClick={() => setShowAnalytics(!showAnalytics)}
-                className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                className="flex-1 sm:flex-none bg-green-600 text-white px-3 py-2 sm:px-4 rounded-lg hover:bg-green-700 transition-colors text-sm sm:text-base"
               >
-                {showAnalytics ? 'Hide' : 'Show'} Muscle Analytics
+                {showAnalytics ? 'Hide' : 'Show'} Analytics
               </button>
               <button
                 onClick={handleAddWorkout}
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                className="flex-1 sm:flex-none bg-blue-600 text-white px-3 py-2 sm:px-4 rounded-lg hover:bg-blue-700 transition-colors text-sm sm:text-base"
               >
-                + Add Workout
+                + Add
               </button>
             </div>
           </div>

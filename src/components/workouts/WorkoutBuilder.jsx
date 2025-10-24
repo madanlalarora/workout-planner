@@ -86,12 +86,12 @@ function WorkoutBuilder({ planId, workout, isExpanded, onToggle, onDelete }) {
   return (
     <div className="bg-white rounded-lg shadow-sm border border-gray-200">
       {/* Workout Header */}
-      <div className="p-4 border-b border-gray-200">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-3 flex-1">
+      <div className="p-3 sm:p-4 border-b border-gray-200">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+          <div className="flex items-center gap-2 sm:gap-3 flex-1 w-full">
             <button
               onClick={onToggle}
-              className="text-gray-600 hover:text-gray-800"
+              className="text-gray-600 hover:text-gray-800 flex-shrink-0"
             >
               {isExpanded ? '▼' : '▶'}
             </button>
@@ -101,12 +101,12 @@ function WorkoutBuilder({ planId, workout, isExpanded, onToggle, onDelete }) {
                   type="text"
                   value={workoutName}
                   onChange={(e) => setWorkoutName(e.target.value)}
-                  className="px-3 py-1 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="px-3 py-1 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base flex-1"
                   autoFocus
                 />
                 <button
                   onClick={handleSaveWorkoutName}
-                  className="text-green-600 hover:text-green-800 text-sm"
+                  className="text-green-600 hover:text-green-800 text-xs sm:text-sm whitespace-nowrap"
                 >
                   Save
                 </button>
@@ -115,31 +115,31 @@ function WorkoutBuilder({ planId, workout, isExpanded, onToggle, onDelete }) {
                     setWorkoutName(workout.name);
                     setIsEditingName(false);
                   }}
-                  className="text-gray-600 hover:text-gray-800 text-sm"
+                  className="text-gray-600 hover:text-gray-800 text-xs sm:text-sm whitespace-nowrap"
                 >
                   Cancel
                 </button>
               </div>
             ) : (
-              <div className="flex items-center gap-2">
-                <h4 className="text-lg font-semibold text-gray-800">{workout.name}</h4>
+              <div className="flex items-center gap-2 flex-1">
+                <h4 className="text-base sm:text-lg font-semibold text-gray-800 truncate">{workout.name}</h4>
                 <button
                   onClick={() => setIsEditingName(true)}
-                  className="text-blue-600 hover:text-blue-800 text-sm"
+                  className="text-blue-600 hover:text-blue-800 text-xs sm:text-sm whitespace-nowrap"
                 >
                   Edit
                 </button>
               </div>
             )}
-            <span className="text-sm text-gray-500">
-              ({workout.exercises.length} {workout.exercises.length === 1 ? 'exercise' : 'exercises'})
+            <span className="text-xs sm:text-sm text-gray-500 whitespace-nowrap">
+              ({workout.exercises.length})
             </span>
           </div>
           <button
             onClick={onDelete}
-            className="text-red-600 hover:text-red-800 text-sm"
+            className="text-red-600 hover:text-red-800 text-xs sm:text-sm self-end sm:self-auto"
           >
-            Delete Workout
+            Delete
           </button>
         </div>
       </div>
@@ -246,7 +246,7 @@ function WorkoutBuilder({ planId, workout, isExpanded, onToggle, onDelete }) {
                       </button>
                     </div>
 
-                    <div className="grid grid-cols-3 gap-3">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                       <div>
                         <label className="block text-xs font-medium text-gray-600 mb-1">
                           Sets
@@ -258,7 +258,7 @@ function WorkoutBuilder({ planId, workout, isExpanded, onToggle, onDelete }) {
                           onChange={(e) =>
                             handleUpdateExercise(index, 'sets', parseInt(e.target.value))
                           }
-                          className="w-full px-3 py-1 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                          className="w-full px-3 py-1 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
                         />
                       </div>
                       <div>
@@ -272,10 +272,10 @@ function WorkoutBuilder({ planId, workout, isExpanded, onToggle, onDelete }) {
                           onChange={(e) =>
                             handleUpdateExercise(index, 'reps', parseInt(e.target.value))
                           }
-                          className="w-full px-3 py-1 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                          className="w-full px-3 py-1 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
                         />
                       </div>
-                      <div className="col-span-1">
+                      <div className="col-span-2 sm:col-span-1">
                         <label className="block text-xs font-medium text-gray-600 mb-1">
                           Notes
                         </label>
@@ -286,7 +286,7 @@ function WorkoutBuilder({ planId, workout, isExpanded, onToggle, onDelete }) {
                             handleUpdateExercise(index, 'notes', e.target.value)
                           }
                           placeholder="Optional"
-                          className="w-full px-3 py-1 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                          className="w-full px-3 py-1 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
                         />
                       </div>
                     </div>
